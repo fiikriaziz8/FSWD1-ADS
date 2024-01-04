@@ -2,7 +2,11 @@
 
 @section('container')
 
-
+@if(session('error'))
+  <script>
+    alert('Data karyawan masih terdapat di tabel cuti!')
+  </script>
+@endif
 <?php 
   $i = 1
 ?>
@@ -88,11 +92,11 @@
       <form method="post" action="/karyawan/post-karyawan">
         @csrf
       <p class="py-4 text-sm">Nomor Induk</p>
-      <input name="Nomor_Induk" type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
+      <input required name="Nomor_Induk" type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
       <p class="py-4 text-sm">Nama</p>
-      <input name="Nama" type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
+      <input required name="Nama" type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
       <p class="py-4 text-sm">Alamat</p>
-      <input name="Alamat" type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
+      <input required name="Alamat" type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
       <p class="py-4 text-sm">Tanggal Lahir</p>
         <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com --> 
         <div
@@ -100,6 +104,7 @@
         data-te-datepicker-init
         data-te-input-wrapper-init>
         <input
+          required
             name="Tanggal_Lahir"
             type="text"
             class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -117,6 +122,7 @@
         data-te-datepicker-init
         data-te-input-wrapper-init>
         <input
+            required
             name="Tanggal_Bergabung"
             type="text"
             class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -194,7 +200,7 @@
                       <button data-te-toggle="modal" data-te-target="#exampleModalEdit"
                       style="background-color:blue"class="btn btn-sm btn-primary" >Update</button>
                     </td>
-                  {{-- Modal Edit --}}
+                  {{-- Modal Edit --}}  
                   <div
                   data-te-modal-init
                   class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"

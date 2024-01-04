@@ -44,16 +44,16 @@
       <form action="/cuti/post" method="post"> 
       @csrf
       <p class="py-4 text-sm">Nomor Induk</p>
-      <select name ="Nomor_Induk" class="select select-bordered w-full max-w-xs min-w-lg">
+      <select required name ="Nomor_Induk" class="select select-bordered w-full max-w-xs min-w-lg">
         <option disabled selected>Pilih Nomor Induk</option>
         @foreach($data_karyawan as $item)
         <option>{{ $item->Nomor_Induk }}</option>
         @endforeach
       </select>
       <p class="py-4 text-sm">Lama Cuti</p>
-      <input name="Lama_Cuti" type="number" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
+      <input required name="Lama_Cuti" type="number" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
       <p class="py-4 text-sm">Keterangan</p>
-      <input name="Keterangan"type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
+      <input required name="Keterangan"type="text" placeholder="Ketik Disini.." class="input input-bordered w-full textarea-sm max-w-xs" />
       
       <p class="py-4 text-sm">Tanggal Cuti</p>
         <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com --> 
@@ -62,6 +62,7 @@
         data-te-datepicker-init
         data-te-input-wrapper-init>
         <input
+        required
             name="Tanggal_Cuti"
             type="text"
             class="peer block min-h-[auto] w-max rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"

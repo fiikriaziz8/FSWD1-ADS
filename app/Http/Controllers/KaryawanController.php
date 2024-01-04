@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Karyawan;
+use App\Models\Cuti;
 use Carbon\Carbon;
 
 class KaryawanController extends Controller
@@ -52,6 +53,12 @@ class KaryawanController extends Controller
     }
 
     public function delete_karyawan(Request $request){
+        $data_cuti = Cuti::all();
+        foreach($data_cuti as $item){
+            if($item->Nomor_Induk == $request->id){
+                return redirect()->back()->with('error', 'message');
+            }
+        }
         Karyawan::where('Nomor_Induk', $request->id)->delete();
         return redirect()->back();
     }
